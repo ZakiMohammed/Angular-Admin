@@ -23,9 +23,17 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "src/assets/css/sb-admin.min.css",
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",              
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
+              "node_modules/jquery.easing/jquery.easing.min.js",
+              "src/assets/js/sb-admin.min.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {
