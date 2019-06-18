@@ -9,6 +9,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HeaderComponent } from './partials/header/header.component';
 import { FooterComponent } from './partials/footer/footer.component';
 import { SidebarComponent } from './partials/sidebar/sidebar.component';
+import { SharedModule } from './modules/shared/shared.module';
+import { UserModule } from './modules/user/user.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { SidebarComponent } from './partials/sidebar/sidebar.component';
   ],
   imports: [
     BrowserModule,
+    SharedModule,
+    UserModule,
     AppRoutingModule
   ],
   providers: [],
