@@ -2,33 +2,43 @@
   <div class="card card-login mx-auto mt-5">
     <div class="card-header">Login</div>
     <div class="card-body">
-      <form novalidate (ngSubmit)="onSubmit()" [formGroup]="fc">
+      <form 
+        novalidate 
+        (ngSubmit)="onSubmit()" 
+        [formGroup]="fc">
         <div class="form-group">
-          <label for="inputEmail">Email address</label>
           <div class="form-label-group">              
             <input 
+                id="inputEmail"
                 type="email" 
                 class="form-control" 
                 autofocus="autofocus"
                 placeholder="Email address"            
                 formControlName="email"
                 [ngClass]="{ 'is-invalid': (fc.get('email').touched || fc.get('email').dirty) && !fc.get('email').valid }">            
+                <label for="inputEmail">Email address</label>
             <span class="invalid-feedback">
               <span *ngIf="fc.get('email').errors?.required">This field is required</span>
+              <span *ngIf="fc.get('email').errors?.email">Email is invalid</span>
+              <span *ngIf="fc.get('email').errors?.minlength">The field length is less than required</span>
             </span>
           </div>
         </div>
         <div class="form-group">
-          <label for="inputEmail">Password</label>
           <div class="form-label-group">
             <input 
+                id="inputPassword"
                 type="password" 
                 class="form-control" 
-                placeholder="Password"                  
+                placeholder="Password"
+                maxlength="8"                  
                 formControlName="password"
                 [ngClass]="{ 'is-invalid': (fc.get('password').touched || fc.get('password').dirty) && !fc.get('password').valid }">            
+            <label for="inputPassword">Password</label>
             <span class="invalid-feedback">
               <span *ngIf="fc.get('password').errors?.required">This field is required</span>
+              <span *ngIf="fc.get('password').errors?.email">Email is invalid</span>
+              <span *ngIf="fc.get('password').errors?.minlength">The field length is less than required</span>
             </span>
           </div>
         </div>
@@ -39,12 +49,12 @@
               Remember Password
             </label>
           </div>
-        </div>
-        <a class="btn btn-primary btn-block" href="index.html">Login</a>
+        </div>        
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
       </form>
-      <div class="text-center">
-        <a class="d-block small mt-3" href="register.html">Register an Account</a>
-        <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+      <div class="text-center">        
+        <a class="d-block small mt-3" [routerLink]="['/register']">Register an Account</a>
+        <a class="d-block small" [routerLink]="['/forgot-password']">Forgot Password?</a>
       </div>
     </div>
   </div>

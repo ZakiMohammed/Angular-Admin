@@ -5,6 +5,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { Routes, RouterModule } from "@angular/router";
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   { 
@@ -17,10 +18,15 @@ const routes: Routes = [
     component: RegisterComponent,
     canActivate: [AuthGuard] 
   },
+  { 
+    path: 'forgot-password', 
+    component: ForgotPasswordComponent,
+    canActivate: [AuthGuard] 
+  },
 ];
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent],
+  declarations: [LoginComponent, RegisterComponent, ForgotPasswordComponent],
   imports: [
     CommonModule,
     FormsModule,
