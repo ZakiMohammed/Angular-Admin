@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Constants } from 'src/app/modules/shared/helper/constants';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/modules/shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private renderer: Renderer2, 
     private builder: FormBuilder,
-    private router: Router) {
+    private router: Router,
+    private auth: AuthService) {
     // this.renderer.addClass(document.body, 'bg-dark');
   }
 
@@ -33,7 +35,9 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.fc.valid) {
-      localStorage.setItem(Constants.LOCAL_STORAGE_AUTH, this.fc.value.email);
+      this.auth.onLogin({
+        email: this.fc.value.email
+      });
       this.router.navigate(['/dashboard']);
     }
   }

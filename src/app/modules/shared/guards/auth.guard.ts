@@ -1,28 +1,25 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Constants } from '../modules/shared/helper/constants';
+import { Constants } from '../helper/constants';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private auth: AuthService) { }
 
   canActivate(
     route: ActivatedRouteSnapshot, 
     state: RouterStateSnapshot): boolean {
 
-    let isLoggedIn = false;
-    let storage = localStorage.getItem(Constants.LOCAL_STORAGE_AUTH);
     let urls = ['/login', '/register', '/forgot-password'];
 
-    if (storage) {
-      isLoggedIn = true;
-    }
-
-    if (isLoggedIn) {
+    if (this.auth.isLoggedIn()) {
       if (urls.find(i => i === state.url)) {
         this.router.navigate(['/dashboard']);
       }

@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ShellComponent } from './components/shell/shell.component';
-import { AuthGuard } from './guards/auth.guard';
+import { AuthGuard } from './modules/shared/guards/auth.guard';
 
 const routes: Routes = [
   { 
@@ -19,6 +19,10 @@ const routes: Routes = [
       {
         path: 'customers',
         loadChildren: './modules/customer/customer.module#CustomerModule'
+      },
+      {
+        path: 'accounts',
+        loadChildren: './modules/account/account.module#AccountModule'
       },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: '**', component: NotFoundComponent }
