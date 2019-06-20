@@ -25,11 +25,16 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css",
+              "node_modules/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css",
               "src/assets/css/sb-admin.min.css",
               "src/styles.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",              
+              "node_modules/jquery/dist/jquery.min.js",     
+              "node_modules/datatables.net/js/jquery.dataTables.js",  
+              "node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js",
+              "node_modules/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js",       
               "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
               "node_modules/jquery.easing/jquery.easing.min.js",
               "src/assets/js/sb-admin.min.js"
