@@ -6,7 +6,7 @@
         <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered table-striped table-hover table-sm">
             <thead>
                 <tr>
-                    <th style="width: 10px;"></th>
+                    <th style="width: 10%;"></th>
                     <th>ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
@@ -18,7 +18,8 @@
                 <tr *ngFor="let customer of customers">
                     <td>
                         <!-- dynamic page load -->
-                        <a [routerLink]="['/customers/', customer.id]" class="btn btn-sm btn-info">View</a>
+                        <a [routerLink]="['/customers/', customer.id]" class="btn btn-sm btn-info mr-2">View</a>
+                        <a [routerLink]="['/customers/', customer.id, 'edit']" class="btn btn-sm btn-warning">Edit</a>
                         <!-- <a routerLink="{{ '/customers/' + customer.id }}" class="btn btn-sm btn-info">View</a> -->
 
                         <!-- full page reload -->

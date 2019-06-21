@@ -6,5 +6,8 @@ export class Constants {
     // storage
     public static LOCAL_STORAGE_AUTH: string = 'SB_AUTH';
 
-    // global
+    // message
+    public static MESSAGE_INSERTED: string = 'Record inserted successfully';
+    public static MESSAGE_SUBMITED: string = 'Record submitted successfully';
+    public static MESSAGE_ERROR: string = 'Something went wrong';
 }

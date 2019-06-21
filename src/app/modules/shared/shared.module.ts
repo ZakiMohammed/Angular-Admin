@@ -5,9 +5,10 @@ import { DataTablesModule } from 'angular-datatables';
 
 import { SearchComponent } from './components/search/search.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
-  declarations: [SearchComponent, BreadcrumbComponent],
+  declarations: [SearchComponent, BreadcrumbComponent, AlertComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -16,6 +17,7 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
   exports: [
     SearchComponent,
     BreadcrumbComponent,
+    AlertComponent,
     CommonModule,
     DataTablesModule
   ]

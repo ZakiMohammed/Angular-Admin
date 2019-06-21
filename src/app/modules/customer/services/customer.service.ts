@@ -17,14 +17,14 @@ export class CustomerService {
     this.headers = new HttpHeaders({ 'Content-Type': 'application/json' });    
   }
 
-  postCustomer(contact: Customer): Promise<any> {    
-    return this.http.post(this.url + 'add.php', contact, {headers: this.headers}).toPromise()
+  postCustomer(customer: Customer): Promise<any> {    
+    return this.http.post(this.url + 'add.php', customer, {headers: this.headers}).toPromise()
       .then(this.extractData)
       .catch(this.handleErrorPromise);
   }
 
-  updateCustomer(contact: Customer): Promise<any> {    
-    return this.http.post(this.url + 'update.php', contact, {headers: this.headers}).toPromise()
+  updateCustomer(customer: Customer): Promise<any> {    
+    return this.http.post(this.url + 'update.php', customer, {headers: this.headers}).toPromise()
       .then(this.extractData)
       .catch(this.handleErrorPromise);
   }
@@ -41,8 +41,7 @@ export class CustomerService {
   }
 
   private extractData(res: Response) {
-    let body = res.json();
-    return body || {};
+    return res || {};
   }
   private handleErrorPromise(error: Response | any) {
     console.error(error.message || error);

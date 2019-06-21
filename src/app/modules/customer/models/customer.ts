@@ -4,4 +4,12 @@ export class Customer {
     lastName: string;
     mobile: string;
     email: string;
+
+    constructor() {
+        this.id = 0;
+        this.firstName = '';
+        this.lastName = '';
+        this.mobile = '';
+        this.email = '';
+    }
 }
