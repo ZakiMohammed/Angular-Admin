@@ -4,6 +4,7 @@ import { Customer } from '../../models/customer';
 import { CustomerService } from '../../services/customer.service';
 import { Alert } from 'src/app/modules/shared/models/alert';
 import { Constants } from 'src/app/modules/shared/helper/constants';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-customer-edit',
@@ -12,24 +13,37 @@ import { Constants } from 'src/app/modules/shared/helper/constants';
 })
 export class CustomerEditComponent implements OnInit {
 
+  id: number;
   fg: FormGroup;
+  customer: Customer;
   alert: Alert;
 
   constructor(
     private builder: FormBuilder,
+    private route: ActivatedRoute,
     private customerService: CustomerService) {
+      this.id = this.route.snapshot.params.id || 0;    
       this.alert = new Alert(false, '', '');
+      this.customer = new Customer();
   }
 
-  get fc() { return this.fg.controls; }
+  get fc() { 
+    return this.fg.controls; 
+  }
   
   ngOnInit() {
-    this.fg = this.builder.group({
-      firstName: ['', [Validators.required, Validators.minLength(3)]],
-      lastName: ['', [Validators.required, Validators.minLength(3)]],
-      mobile: ['', [Validators.required, Validators.minLength(7)]],
-      email: ['', [Validators.required, Validators.email]]
-    });
+    
+    if (this.id) {
+      this.customerService.getCustomer(this.id).subscribe((response) => {
+        this.customer = response;
+        this.fg = this.builder.group({
+          firstName: [this.customer.firstName, [Validators.required, Validators.minLength(3)]],
+          lastName: [this.customer.lastName, [Validators.required, Validators.minLength(3)]],
+          mobile: [this.customer.mobile, [Validators.required, Validators.minLength(7)]],
+          email: [this.customer.email, [Validators.required, Validators.email]]
+        });
+      }, (error) => {}, () => {});
+    }
   }
 
   onSubmit() {
