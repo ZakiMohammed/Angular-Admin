@@ -2,7 +2,36 @@
 <h1>Customer List</h1>
 <hr>
 <div class="row mb-5">
-    <div class="col">
-        <table datatable [dtOptions]="dtOptions" class="table table-bordered table-striped table-hover table-sm"></table>
+    <div class="col">        
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered table-striped table-hover table-sm">
+            <thead>
+                <tr>
+                    <th style="width: 10px;"></th>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Mobile</th>
+                    <th>Email</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let customer of customers">
+                    <td>
+                        <!-- dynamic page load -->
+                        <a [routerLink]="['/customers/', customer.id]" class="btn btn-sm btn-info">View</a>
+                        <!-- <a routerLink="{{ '/customers/' + customer.id }}" class="btn btn-sm btn-info">View</a> -->
+
+                        <!-- full page reload -->
+                        <!-- <a [href]="'/customers/' + customer.id" class="btn btn-sm btn-info">View</a> -->
+                        <!-- <a href="{{ '/customers/' + customer.id }}" class="btn btn-sm btn-info">View</a> -->
+                    </td>
+                    <td>{{ customer.id }}</td>
+                    <td>{{ customer.firstName }}</td>
+                    <td>{{ customer.lastName }}</td>
+                    <td>{{ customer.mobile }}</td>
+                    <td>{{ customer.email }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

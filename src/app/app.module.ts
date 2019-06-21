@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { SharedModule } from './modules/shared/shared.module';
+import { UserModule } from './modules/user/user.module';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ShellComponent } from './components/shell/shell.component';
@@ -9,8 +12,6 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HeaderComponent } from './partials/header/header.component';
 import { FooterComponent } from './partials/footer/footer.component';
 import { SidebarComponent } from './partials/sidebar/sidebar.component';
-import { SharedModule } from './modules/shared/shared.module';
-import { UserModule } from './modules/user/user.module';
 
 @NgModule({
   declarations: [

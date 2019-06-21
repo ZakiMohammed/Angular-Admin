@@ -1,4 +1,25 @@
 <!-- Page Content -->
-<h1>Customer View</h1>
+<h1>Customer Details</h1>
 <hr>
-<p>This is a great starting point for new custom pages.</p>
+<div class="row">
+    <div class="col-sm-3">
+        <img src="https://picsum.photos/300" class="img-fluid rounded">
+    </div>
+    <div class="col-sm-9">
+        <ul class="list-group">
+            <li class="list-group-item">
+                First Name: {{ customer.firstName }}
+            </li>
+            <li class="list-group-item">
+                Last Name: {{ customer.lastName }}
+            </li>
+            <li class="list-group-item">
+                Mobile: {{ customer.mobile }}
+            </li>
+            <li class="list-group-item">
+                Email: {{ customer.email }}
+            </li>
+        </ul>
+        <a class="btn btn-secondary btn-sm mt-3" [routerLink]="['/customers']">Back</a>
+    </div>
+</div>
