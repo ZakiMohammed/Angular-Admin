@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CustomerService } from '../../services/customer.service';
 import { Customer } from 'src/app/modules/customer/models/customer';
 import { Subject } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-customer-list',
@@ -14,7 +15,9 @@ export class CustomerListComponent implements OnInit, OnDestroy {
   dtTrigger: Subject<any> = new Subject();
   customers: Customer[] = [];
 
-  constructor(private customerService: CustomerService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private customerService: CustomerService) { }
   
   ngOnInit(): void {
 
@@ -27,6 +30,8 @@ export class CustomerListComponent implements OnInit, OnDestroy {
         }
       ]
     };
+
+    this.customers = this.route.snapshot.data.resolveData.customers;
 
     this.customerService.getCustomers().subscribe((response: Customer[]) => {
       this.customers = response;

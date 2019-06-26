@@ -13,3 +13,11 @@ export class Customer {
         this.email = '';
     }
 }
+export class CustomerResolved {
+    customer: Customer;
+    error?: any;
+}
+export class CustomerListResolved {
+    customers: Customer[];
+    error?: any;
+}

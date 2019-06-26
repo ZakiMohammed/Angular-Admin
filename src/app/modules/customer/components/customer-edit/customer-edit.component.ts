@@ -22,7 +22,7 @@ export class CustomerEditComponent implements OnInit {
     private builder: FormBuilder,
     private route: ActivatedRoute,
     private customerService: CustomerService) {
-      this.id = this.route.snapshot.params.id || 0;    
+      this.id = +this.route.snapshot.params.id || 0;    
       this.alert = new Alert(false, '', '');
       this.customer = new Customer();
   }
@@ -33,17 +33,25 @@ export class CustomerEditComponent implements OnInit {
   
   ngOnInit() {
     
-    if (this.id) {
-      this.customerService.getCustomer(this.id).subscribe((response) => {
-        this.customer = response;
-        this.fg = this.builder.group({
-          firstName: [this.customer.firstName, [Validators.required, Validators.minLength(3)]],
-          lastName: [this.customer.lastName, [Validators.required, Validators.minLength(3)]],
-          mobile: [this.customer.mobile, [Validators.required, Validators.minLength(7)]],
-          email: [this.customer.email, [Validators.required, Validators.email]]
-        });
-      }, (error) => {}, () => {});
+    if (this.id !== 0) {
+      this.customer = this.route.snapshot.data.resolveData.customer;
+      
+      // this.customerService.getCustomer(this.id).subscribe((response) => {
+      //   this.customer = response;        
+      // }, (error) => {}, () => {
+      //   this.initializeForm();
+      // });
     }
+    this.initializeForm();
+  }
+
+  initializeForm() {
+    this.fg = this.builder.group({
+      firstName: [this.customer.firstName, [Validators.required, Validators.minLength(3)]],
+      lastName: [this.customer.lastName, [Validators.required, Validators.minLength(3)]],
+      mobile: [this.customer.mobile, [Validators.required, Validators.minLength(7)]],
+      email: [this.customer.email, [Validators.required, Validators.email]]
+    });
   }
 
   onSubmit() {

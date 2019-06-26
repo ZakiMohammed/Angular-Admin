@@ -5,6 +5,9 @@
 
     <div id="content-wrapper">
         <div class="container-fluid">
+            <div [hidden]="!loading" class="loader">
+                <span class="fas fa-spinner fa-spin"></span>
+            </div>            
             <app-breadcrumb></app-breadcrumb>
             <router-outlet class="display-content"></router-outlet>
         </div>

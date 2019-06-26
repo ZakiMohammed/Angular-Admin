@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../../services/customer.service';
 import { ActivatedRoute } from '@angular/router';
-import { Customer } from 'src/app/modules/customer/models/customer';
+import { Customer, CustomerResolved } from 'src/app/modules/customer/models/customer';
 
 @Component({
   selector: 'app-customer-view',
@@ -21,12 +21,15 @@ export class CustomerViewComponent implements OnInit {
     }
 
   ngOnInit() {
-    console.log(this.id);
-    this.customerService.getCustomer(this.id).subscribe((response: Customer) => {
-      this.customer = response;
-    }, (error) => {
-      console.log('Error');
-    }), () => {};
+
+    this.customer = this.route.snapshot.data.resolveData.customer;
+
+    // console.log(this.id);
+    // this.customerService.getCustomer(this.id).subscribe((response: Customer) => {
+    //   this.customer = response;
+    // }, (error) => {
+    //   console.log('Error');
+    // }), () => {};
   }
 
 }
