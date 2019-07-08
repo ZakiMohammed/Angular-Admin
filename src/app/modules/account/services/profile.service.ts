@@ -29,6 +29,10 @@ export class ProfileService {
       .pipe(map(response => <Profile>response));
   }
 
+  login(email:string, password: string): Promise<any> {
+    return this.http.post(this.url + 'login.php', { email: email, password: password }, {headers: this.headers}).toPromise();
+  }
+
   private extractData(res: Response) {
     return res || {};
   }
