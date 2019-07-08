@@ -1,3 +1,55 @@
-<p>
-  profile works!
-</p>
+<!-- Page Content -->
+<h1>Profile Details</h1>
+<hr>
+<div class="row">
+	<div class="col-sm-3">
+		<img src="https://picsum.photos/300" class="img-fluid rounded">
+	</div>
+	<div class="col-sm-9">
+		<form novalidate (ngSubmit)="onSubmit()" [formGroup]="fg">
+			<div class="form-group">
+				<input type="text" placeholder="First Name" class="form-control" name="firstName"
+					formControlName="firstName" maxlength="30"
+					[ngClass]="{ 'is-invalid': (fc.firstName.touched || fc.firstName.dirty) && !fc.firstName.valid }">
+				<span class="invalid-feedback">
+					<span *ngIf="fc.firstName.errors?.required">First name is required</span>
+					<span *ngIf="fc.firstName.errors?.minlength">At least 3 characters are required</span>
+					<span *ngIf="fc.firstName.errors?.maxlength">At max 30 characters are allowed</span>
+				</span>
+			</div>
+			<div class="form-group">
+				<input type="text" placeholder="Last Name" class="form-control" name="lastName"
+					formControlName="lastName" maxlength="30"
+					[ngClass]="{ 'is-invalid': (fc.lastName.touched || fc.lastName.dirty) && !fc.lastName.valid }">
+				<span class="invalid-feedback">
+					<span *ngIf="fc.lastName.errors?.required">Last name is required</span>
+					<span *ngIf="fc.lastName.errors?.minlength">At least 3 characters are required</span>
+				</span>
+			</div>
+			<div class="form-group">
+				<input type="email" placeholder="Email" class="form-control" name="email" formControlName="email"
+					maxlength="30"
+					[ngClass]="{ 'is-invalid': (fc.email.touched || fc.email.dirty) && !fc.email.valid }">
+				<span class="invalid-feedback">
+					<span *ngIf="fc.email.errors?.required">Email is required</span>
+					<span *ngIf="fc.email.errors?.minlength">At least 3 characters are required</span>
+				</span>
+			</div>
+			<div class="form-group">
+				<input type="text" placeholder="Mobile" class="form-control" name="mobile" formControlName="mobile"
+					maxlength="10"
+					[ngClass]="{ 'is-invalid': (fc.mobile.touched || fc.mobile.dirty) && !fc.mobile.valid }">
+				<span class="invalid-feedback">
+					<span *ngIf="fc.mobile.errors?.required">Mobile is required</span>
+					<span *ngIf="fc.mobile.errors?.minlength">At least 7 digits are required</span>
+				</span>
+			</div>
+			<div>
+				<button type="submit" class="btn btn-primary mr-2">
+					Submit
+				</button>
+				<app-alert [alert]="alert"></app-alert>
+			</div>
+		</form>
+	</div>
+</div>

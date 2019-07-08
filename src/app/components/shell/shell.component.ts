@@ -29,7 +29,6 @@ export class ShellComponent implements OnInit {
 
   checkRouterEvent(routerEvent: Event): void {
     if (routerEvent instanceof NavigationStart) {
-      console.log('NavigationStart');
       this.loading = true;
     }
     if (routerEvent instanceof NavigationEnd ||

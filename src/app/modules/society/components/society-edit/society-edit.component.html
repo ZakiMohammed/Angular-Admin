@@ -1,0 +1,76 @@
+<!-- Page Content -->
+<h1>Society Details</h1>
+<hr>
+<div class="row mb-5">
+	<div class="col-sm-3">
+		<img src="https://picsum.photos/300" class="img-fluid rounded">
+	</div>
+	<div class="col-sm-9">
+		<form novalidate (ngSubmit)="onSubmit()" [formGroup]="fg">
+			<div class="form-group">
+				<input type="text" placeholder="Name" class="form-control" name="name" formControlName="name"
+					maxlength="30" [ngClass]="{ 'is-invalid': (fc.name.touched || fc.name.dirty) && !fc.name.valid }">
+				<span class="invalid-feedback">
+					<span *ngIf="fc.name.errors?.required">Name is required</span>
+					<span *ngIf="fc.name.errors?.minlength">At least 3 characters are required</span>
+					<span *ngIf="fc.name.errors?.maxlength">At max 30 characters are allowed</span>
+				</span>
+			</div>
+			<div class="form-group">
+				<input type="text" placeholder="Display Name" class="form-control" name="displayName"
+					formControlName="displayName" maxlength="30"
+					[ngClass]="{ 'is-invalid': (fc.displayName.touched || fc.displayName.dirty) && !fc.displayName.valid }">
+				<span class="invalid-feedback">
+					<span *ngIf="fc.displayName.errors?.required">Display name is required</span>
+					<span *ngIf="fc.displayName.errors?.minlength">At least 3 characters are required</span>
+				</span>
+			</div>
+			<div class="form-group">
+				<input type="text" placeholder="Address 1" class="form-control" name="address1"
+					formControlName="address1"
+					[ngClass]="{ 'is-invalid': (fc.address1.touched || fc.address1.dirty) && !fc.address1.valid }">
+				<span class="invalid-feedback">
+					<span *ngIf="fc.address1.errors?.required">Address 1 is required</span>
+					<span *ngIf="fc.address1.errors?.minlength">At least 7 characters are required</span>
+				</span>
+			</div>
+			<div class="form-group">
+				<input type="text" placeholder="Address 2" class="form-control" name="address2"
+					formControlName="address2" maxlength="30">
+			</div>
+			<div class="form-group">
+				<input type="text" placeholder="City" class="form-control" name="city" formControlName="city"
+					maxlength="30">
+			</div>
+			<div class="form-group">
+				<input type="text" placeholder="State" class="form-control" name="state" formControlName="state"
+					maxlength="30">
+			</div>
+			<div class="form-group">
+				<input type="text" placeholder="Country" class="form-control" name="country" formControlName="country"
+					maxlength="30">
+			</div>
+			<div class="form-group">
+				<input type="text" placeholder="Pin Code" class="form-control" name="pinCode" formControlName="pinCode"
+					maxlength="30">
+			</div>
+			<div class="form-group">
+				<input type="text" placeholder="Contact No" class="form-control" name="contactNo"
+					formControlName="contactNo" maxlength="30">
+			</div>
+			<div class="form-group">
+				<div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input" id="chkActive" name="active" formControlName="active">
+					<label class="custom-control-label" for="chkActive">Active</label>
+				</div>
+			</div>
+			<div>
+				<button type="submit" class="btn btn-primary mr-2">
+					Submit
+				</button>
+				<a class="btn btn-secondary" [routerLink]="['/societies']">Back</a>
+				<app-alert [alert]="alert"></app-alert>
+			</div>
+		</form>
+	</div>
+</div>
